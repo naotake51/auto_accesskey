@@ -1,0 +1,37 @@
+.arrow-mark {
+    background-repeat:no-repeat;
+    background-position: center center; 
+    background-size: 70%;
+    z-index: 2147483647;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: auto;
+    height: 70px;
+    width: 70px;
+    font-size: 24px;
+    color: white;
+    border: none 0 black;
+}
+.arrow-up-mark {
+    background-image: url('chrome-extension://__MSG_@@extension_id__/img/arrow_up.svg');
+}
+.arrow-down-mark {
+    background-image: url('chrome-extension://__MSG_@@extension_id__/img/arrow_down.svg');
+}
+.arrow-left-mark {
+    background-image: url('chrome-extension://__MSG_@@extension_id__/img/arrow_left.svg');
+}
+.arrow-right-mark {
+    background-image: url('chrome-extension://__MSG_@@extension_id__/img/arrow_right.svg');
+}
+.accesskey-mark.select {
+    animation-name: select-mark;
+    animation-duration: 0.3s;
+}
+@keyframes select-mark {
+    0% {transform: none;}
+    50% {transform: scale(1.1);}
+    100% {transform: none;}
+}

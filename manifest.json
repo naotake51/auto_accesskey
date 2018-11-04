@@ -1,0 +1,49 @@
+{
+    "manifest_version": 2,
+    "name": "auto accesskey",
+    "version": "1.0",
+    "description": "html element add accesskey",
+  
+    "options_ui": {
+        "page": "option.html",
+        "chrome_style": true
+    },
+
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+  
+    "content_scripts": [
+        {
+            "matches": [ "<all_urls>" ],
+            "js": [
+                "js/common.js",
+                "js/setting.js",
+                "js/mark.js",
+                "js/accesskey.js",
+                "js/arrowkey.js",
+                "js/pagekey.js",
+                "js/scroll.js",
+                "js/main.js"
+            ],
+            "css": ["css/mark.css"]
+        }
+    ],
+
+    "web_accessible_resources": ["img/*"],
+
+    "background": {
+        "scripts": [
+            "js/common.js",
+            "js/background.js"
+        ],
+        "persisitent": false
+    },
+
+    "browser_action": {
+        "default_icon": "img/icon.PNG",
+        "default_title": "auto accesskey",
+        "default_popup": "popup.html"
+    }
+}   
