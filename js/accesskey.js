@@ -1,41 +1,58 @@
 "use strict";
 var Accesskey = {
-    elements: [], //accesskeyを設定したelement
-    accesskey_marks: [], //accesskeyを設定したことを可視化したマーク
-    // accesskey設定および、可視化
+    /**
+     * アクセスキーを設定したDOM
+     */
+    elements: [],
+    /**
+     * 表示中アクセスキーマーク
+     */
+    accesskey_marks: [],
+    /**
+     * アクセスキーマーク表示、アクセスキー設定
+     * @param {object} setting - 設定
+     */
     show: function (setting) {
-        // アクセスキー設定対象取得
+        // アクセスキー設定対象DOM取得
         var elements = Accesskey.target();
-        elements = elements.slice(0, setting.accesskey_codes.length);
+        elements = elements.slice(0, setting.codes.length);
+
         elements.forEach(function (element, index) {
             // アクセスキー設定
-            element.setAttribute("accesskey", setting.accesskey_codes[index]);
+            element.setAttribute("accesskey", setting.codes[index]);
             Accesskey.elements.push(element);
-            // アクセスキー可視化
+            // アクセスキーマーク追加
             var rect = element.getBoundingClientRect();
             var mark = Mark.accesskey_mark({
                 top: rect.top + window.pageYOffset,
                 left: rect.left + window.pageXOffset,
                 size: Math.min(rect.height, rect.width, 32),
-                label: setting.accesskey_codes[index]
+                label: setting.codes[index]
             });
             document.body.appendChild(mark);
             Accesskey.accesskey_marks.push(mark);
         });
     },
-    // accesskey削除、mark削除
+    /**
+     * アクセスキーマーク非表示、アクセスキー設定削除
+     * @param {object} setting - 設定
+     */
     hide: function () {
         // アクセスキー削除
         Accesskey.elements.forEach(function (element) {
             element.removeAttribute("accesskey");
         });
         Accesskey.elements = [];
-        // アクセスキー可視化マーク削除
+        // アクセスキーマーク削除
         Accesskey.accesskey_marks.forEach(function (mark) {
             mark.parentNode.removeChild(mark);
         });
         Accesskey.accesskey_marks = [];
     },
+    /**
+     * アクセスキー設定対象DOM取得
+     * @return {array} elements - 設定対象DOMのリスト
+     */
     target: function () {
         var elements = Array.from(document.querySelectorAll("*"));
         elements = elements.filter(Accesskey.display_element);
@@ -46,13 +63,16 @@ var Accesskey = {
         });
         return elements;
     },
+    /**
+     * アクセスキー設定対象DOM判定
+     * @param {object} element - DOM
+     * @return {boolean} - 判定結果
+     */
     display_element: function (element) {
         // 要素の種類
         if (0 <= ["INPUT", "A", "BUTTON", "IMG", "TEXTAREA", "OPTION", "H1", "H2", "H3", ].indexOf(element.tagName)) {;;
         } else {
-            // if (element.onclick === null) {
             return false;
-            // }
         }
         // 画面表示有無
         var rect = element.getBoundingClientRect();
@@ -98,10 +118,16 @@ var Accesskey = {
         }
         return true;
     },
+    /**
+     * アクセスキーマークの選択アニメーション
+     * @param {string} code - 選択されたキー文字
+     */
     select: function (code) {
         for (var accesskey_mark of Accesskey.accesskey_marks) {
             if (accesskey_mark.innerText === code) {
+                // アニメーション用クラス追加
                 accesskey_mark.classList.add("select");
+                // アニメーション用クラス削除登録
                 setTimeout(function () {
                     accesskey_mark.classList.remove("select")
                 }, 300);

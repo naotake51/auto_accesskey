@@ -1,5 +1,8 @@
 "use strict";
 var Common = {
+    /**
+     * デフォルトオプション
+     */
     default_option: {
         "scroll-up": "i",
         "scroll-down": "k",
@@ -10,6 +13,9 @@ var Common = {
         "new-tab": "n",
         "delete-tab": "b",
     },
+    /**
+     * メッセージパッシング用ID
+     */
     message_passing_ids: {
         change_option: 0,
     }

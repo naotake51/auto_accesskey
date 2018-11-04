@@ -1,4 +1,7 @@
 "use strict";
+/**
+ * 設定値読み込み
+ */
 document.addEventListener("DOMContentLoaded", function () {
     chrome.storage.sync.get(Common.default_option, function (options) {
         for (var id in options) {
@@ -6,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+/**
+ * 設定値の変更を通知
+ */
 document.addEventListener("change", function () {
     var options = {};
     for (var id in Common.default_option) {

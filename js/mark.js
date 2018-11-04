@@ -1,5 +1,10 @@
 "use strict";
 var Mark = {
+    /**
+     * アクセスキーマーク作成
+     * @param {object} prop - 作成プロパティ
+     * @return {object} mark - 作成マーク
+     */
     accesskey_mark: function (prop) {
         var mark = document.createElement("div");
         mark.innerText = prop.label;
@@ -37,6 +42,11 @@ var Mark = {
         }
         return mark;
     },
+    /**
+     * 上矢印マーク作成
+     * @param {stirng} code - キーマップ割り当て文字
+     * @return {object} mark - 作成マーク
+     */
     up_mark: function (code) {
         var mark = document.createElement("div");
         mark.className = "arrow-mark arrow-up-mark";
@@ -56,6 +66,11 @@ var Mark = {
         }
         return mark;
     },
+    /**
+     * 下矢印マーク作成
+     * @param {stirng} code - キーマップ割り当て文字
+     * @return {object} mark - 作成マーク
+     */
     down_mark: function (code) {
         var mark = document.createElement("div");
         mark.className = "arrow-mark arrow-down-mark";
@@ -75,6 +90,11 @@ var Mark = {
         }
         return mark;
     },
+    /**
+     * 左矢印マーク作成
+     * @param {stirng} code - キーマップ割り当て文字
+     * @return {object} mark - 作成マーク
+     */
     left_mark: function (code) {
         var mark = document.createElement("div");
         mark.className = "arrow-mark arrow-left-mark";
@@ -94,6 +114,11 @@ var Mark = {
         }
         return mark;
     },
+    /**
+     * 右矢印マーク作成
+     * @param {stirng} code - キーマップ割り当て文字
+     * @return {object} mark - 作成マーク
+     */
     right_mark: function (code) {
         var mark = document.createElement("div");
         mark.className = "arrow-mark arrow-right-mark";
@@ -113,6 +138,11 @@ var Mark = {
         }
         return mark;
     },
+    /**
+     * 戻るマーク作成
+     * @param {stirng} code - キーマップ割り当て文字
+     * @return {object} mark - 作成マーク
+     */
     back_mark: function (code) {
         var mark = document.createElement("div");
         mark.innerText = "Back (" + code + ")";
@@ -150,6 +180,11 @@ var Mark = {
         }
         return mark;
     },
+    /**
+     * 進むマーク作成
+     * @param {stirng} code - キーマップ割り当て文字
+     * @return {object} mark - 作成マーク
+     */
     next_mark: function (code) {
         var mark = document.createElement("div");
         mark.innerText = "Next (" + code + ")";
@@ -187,6 +222,11 @@ var Mark = {
         }
         return mark;
     },
+    /**
+     * タブ新規マーク作成
+     * @param {stirng} code - キーマップ割り当て文字
+     * @return {object} mark - 作成マーク
+     */
     new_tab_mark: function (code) {
         var mark = document.createElement("div");
         mark.innerText = "New Tab (" + code + ")";
@@ -224,6 +264,11 @@ var Mark = {
         }
         return mark;
     },
+    /**
+     * タブ削除マーク作成
+     * @param {stirng} code - キーマップ割り当て文字
+     * @return {object} mark - 作成マーク
+     */
     delete_tab_mark: function (code) {
         var mark = document.createElement("div");
         mark.innerText = "Del Tab (" + code + ")";

@@ -1,4 +1,7 @@
 "use strict"
+/**
+ * 設定値更新メッセージを中継する
+ */
 chrome.runtime.onMessage.addListener(function (message, sender, callback) {
     if (message.id === Common.message_passing_ids.change_option) {
         // すべてのタブに対して、設定が変更されたことを通知する
